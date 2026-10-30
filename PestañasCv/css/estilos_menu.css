@@ -1,0 +1,180 @@
+/* Variables CSS */
+:root {
+    --color-principal-oscuro: #bc42f1;
+    --color-acento-azul: #9c04f4;
+    --color-azul-hover: #d26bf734;
+    --color-fondo-claro: #dda2ef;
+    --color-tarjeta-blanco: #dc83f4;
+    --color-texto-principal: #fff;
+    --color-texto-secundario: #fff;
+    --color-texto-titulo-contenido: rgb(72, 3, 86);
+    --color-borde-gris: #cf83f1;
+    --sombra-elegante: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+    --transicion-suave: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+  /* Reset y estilos base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-fondo-claro);
+  color: var(--color-texto-principal);
+}
+
+/* Permite ocultar contenido que se activará con cada opción del menú
+   por medio de un grupo de inputs de tipo radio */
+.control-pestaña {
+    display: none;
+}
+
+/* Layout de la página */
+.contenedor-grial-sagrado {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 230px 1fr;
+    grid-template-areas:
+       "cabecera cabecera"
+        "lateral-izq principal"
+        "pie pie";
+    min-height: 100vh;
+}
+
+.cabecera-principal {
+    grid-area: cabecera;
+    background-color: var(--color-principal-oscuro);
+    color: var(--color-tarjeta-blanco);
+    padding: 1.25rem 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid #ad37ed;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.enlace-opcion {
+    cursor: pointer;
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-acento-azul);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    user-select: none;
+}
+
+.enlace-opcion:hover {
+    color: var(--color-tarjeta-blanco);
+    background-color: rgba(100, 32, 32, 0.678);
+}
+
+ /* Menú de Navegación moderno y horizontal */
+.menu-navegacion {
+    display: flex;
+    gap: 0.75rem;
+    background-color: rgba(30, 41, 59, 0.7);
+    padding: 0.35rem;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Barra Lateral Izquierda (Sidebar) */
+.lateral-izquierdo {
+    grid-area: lateral-izq;
+    background-color: var(--color-tarjeta-blanco);
+    border-right: 1px solid var(--color-borde-gris);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+/* Contenido Principal (Main) */
+.contenido-principal {
+    grid-area: principal;
+    padding: 2.5rem;
+    background-color: #e0a6f7;
+    display: flex;
+    justify-content: center;        
+    overflow-y: auto;
+}
+
+/* Tarjeta del contenido de las opciones - efecto pestaña */
+.contenedor-opc {
+    display: none;
+    width: 100%;
+    max-width: 850px;
+    padding: 20px;
+    background-color: var(--color-tarjeta-blanco);
+    border-radius: 20px;
+    box-shadow: var(--sombra-elegante);
+    border: 1px solid var(--color-borde-gris);
+    overflow: hidden;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.contenedor-opc h3{
+   padding-bottom: 20px; 
+   color:var(--color-texto-titulo-contenido);
+}
+
+.contenedor-opc p{
+  color:var(--color-texto-secundario);
+  
+}
+
+.imagen-circular {
+    width: 150px;       /* Ancho fijo */
+    height: 150px;      /* Alto igual al ancho para formar un cuadrado perfecto */
+    border-radius: 50%; /* Vuelve los bordes completamente circulares */
+    object-fit: cover;  /* Evita que la imagen se deforme o estire */
+}
+
+/* Pie de Página (Footer) */
+.pie-pagina-principal {
+    grid-area: pie;
+    background-color: var(--color-principal-oscuro);
+    color: #ffffff;
+    padding: 1.25rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #1e293b;
+    font-size: 0.85rem;
+    z-index: 10;
+}
+
+#Nombre{
+  text-align: center;
+}
+
+.lista{
+    text-align: left;
+}
+
+.exp{
+  font-size: x-small;
+}
+
+.actualizaciones{
+    font-size: small;
+}
+
+/* LÓGICA CSS PURA: Cambio de visibilidad de las opciones del menu 
+   mediante selectores de radio */
+   #pestaña-opcion-1:checked ~ .contenido-principal #contenido-opc1,
+   #pestaña-opcion-2:checked ~ .contenido-principal #contenido-opc2,
+   #pestaña-opcion-3:checked ~ .contenido-principal #contenido-opc3 {
+       display: block;
+    }
